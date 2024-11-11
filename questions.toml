@@ -1,0 +1,956 @@
+[python]
+label = "Python"
+
+[[python.questions]]
+question = "When was the first know use of the word 'quiz'"
+answers = ["1781"]
+alternatives = ["1771", "1871", "1881"]
+
+[[python.questions]]
+question = "Which built-in function can get information from the user" 
+answers = ["input"]
+alternatives = ["get", "print", "write"]
+
+[[python.questions]]
+question = "Which keyword do you use to loop over a given list of elements" 
+answers = ["for"]
+alternatives = ["while", "each", "loop"]
+
+[[python.questions]]
+question = "What's the purpose of the built-in zip() function"
+answers = ["To iterate over two or more sequences at the same time"]
+alternatives = [
+    "To combine several strings into one",
+    "To compress several files into one archive",
+    "To get information from the user",
+    ]
+
+[[python.questions]]
+question = "What's the name of Python's sorting algorithm"
+answers = ["Timsort"] 
+alternatives = ["Quicksort", "Merge sort", "Bubble sort"]
+
+[[python.questions]]
+question = "What does dict.get(key) return if key isn't found in dict"
+answers = ["None"]
+alternatives = ["key", "True", "False"]
+
+[[python.questions]]
+question = "How do you iterate over both indices and elements in an iterable"
+answers = ["enumerate(iterable)"]
+alternatives = [
+    "enumerate(iterable, start=1)",
+    "range(iterable)",
+    "range(iterable, start=1)",
+    ]
+
+[[python.questions]]
+question = "What's the offical name of the := operator"
+answers = ["Assignment expression"]
+alternatives = [
+    "Named expression",
+    "Walrus operator",
+    "Colon equals operator",
+    ]
+
+[[python.questions]]
+question = "What's one effect of calling random.seed(42)"
+answers = ["The random numbers are reproducible."]
+alternatives = [
+    "The random numbers are more random.",
+    "The computer clock is reset.",
+    "The first random number is always 42.",
+    ]
+
+[[python.questions]]
+question = "When does __name__ == '__main__' equal True in a Python file"
+answers = ["When the file is run as a script"]
+alternatives = [
+    "When the file is imported as a module",
+    "When the file has a valid name",
+    "When the file only has one function",
+    ]
+
+[[python.questions]]
+question = "Which version of Python is the first with TOML support built in"
+answers = ["3.11"]
+alternatives = ["3.9", "3.10", "3.12"]
+
+[[python.questions]]
+question = "What's the name of the list-like data structure in TOML"
+answers = ["Array"]
+alternatives = ["List", "Sequence", "Set"]
+
+[[python.questions]]
+question = "How can you run a Python script named quiz.py"
+answers = ["python quiz.py", "python -m quiz"]
+alternatives = ["python quiz", "python -m quiz.py"]
+hint = "One option uses the filename, and the other uses the module name."
+
+[[python.questions]]
+question = "What is a PEP"
+answers = ["A Python Enhancement Proposal"]
+alternatives = [
+    "A Pretty Exciting Policy",
+    "A Preciously Evolved Python",
+    "A Potentially Epic Prize",
+]
+hint = "PEPs are used to evolve Python."
+explanation = """
+    Python Enhancement Proposals (PEPs) are design documents that provide information to the Python community. PEPs are used to propose new features 
+    for the Python community. PEPs are used to propose new features for the Python language, to collect commuinty input on an issue, and to document 
+    design decisions made about the language.
+"""
+
+[[python.questions]]
+question = "How can you add a docstring to a function"
+answers = [
+    "By writing a string literal as the first statement in the function",
+    "By assigning a string to the function's .__doc__ attribute",
+]
+alternatives = [
+    "By using the built-in @docstring decorator",
+    "By returning a string from the function",
+]
+hint = "They're parsed from your code and stored on the function object."
+explanation = """
+    Docstrings document functions and other Python objects. A docsting is a string literal that occurs as the first statement in a module, function, 
+    class, or method definition. Such a docstring becomes the .__doc__ special attribute of that object. See PEP 257 for more information.
+
+    There is no built-in @doctring decorator. Many functions naturally return strings. Such a feature can therefore not be used for docstings.
+"""
+
+[[python.questions]]
+question = "When was the first public version of Python released"
+answers = ["February 1991"]
+alternatives = ["January 1994", "October 2000", "December 2008"]
+hint = "The first public version was labeled version 0.9.0."
+explanation = """
+    Guido van Rossum started work on Python in December 1989. He posted Python v0.9.0 to the alt.sources newsgroup in February 1991. Python reached 
+    version 1.0.0 in January 1994. The next major versions, Python 2.0 and Python 3.0, were released in October 2000 and December 2008, respectively.
+"""
+
+[capitals]
+label = "Capitals"
+
+[[capitals.questions]]
+question = "What's the capital of Norway"
+answers = ["Oslo"]
+alternatives = ["Stockholm", "Copenhagen", "Helsinki", "Reykjavik"]
+hint = "Lars Onsager, Jens Stoltenberg, Trygve Lie, and Borge Ousland."
+explanation = """
+    Oslo was founded as a city in the 11th century and established as a trading place. It became the capital of Norway in 1299. The city was destroyed in
+    a fire in 1624 and rebuilt as Christiania, named in honor of the regining king. The city was renamed back to Oslo in 1925.
+"""
+
+[[capitals.questions]]
+question = "What's the state capital of Texas, USA"
+answers = ["Austin"]
+alternatives = ["Harrisburg", "Houston", "Galveston", "Columbia"]
+hint = "SciPy is held there each year."
+explanation = """
+    Austin is named in honor of Stephen F. Austin. It was purpose-built to be the capital of Texas and was incorporated in December 1839. Hoston, 
+    Harrisburg, Columbia, and Galveston are all earlier capitals of Texas.
+"""
+
+[makeitstick]
+label = "Make It Stick"
+
+[[makeitstick.questions]]
+question = "What does the text suggest is a key component of effective learning"
+answers = ["Retrieval practice and making learning effortful"]
+alternatives = [
+    "Repetitive exposure to the material",
+    "Making the learning process effortless",
+    "Focusing on a single learning style",
+]
+
+[[makeitstick.questions]]
+question = "Which of the following study strategies is identified as one of the least productive in the text"
+answers = ["Massed practice"]
+alternatives = ["Spaced practice", "Interleaved practice", "Retrieval practice"]
+
+[[makeitstick.questions]]
+question = "According to the text, what common belief about learning is challenged by research"
+answers = ["Cramming before exams is an efficient way to retain information"]
+alternatives = [
+    "Learning is more effective when you use various learning styles",
+    "Spaced practice is less effective than massed practice",
+    "Active retrieval interrupts forgetting",
+]
+
+[[makeitstick.questions]]
+question = "What is the main issue with rereading texts as a study strategy, according to the text"
+answers = ["It doesn't lead to durable memory retention"]
+alternatives = ["It takes too much time", "It is too difficult for most learners", "It leads to overconfidence in understanding the material"]
+
+[[makeitstick.questions]]
+question = "Which of the following does the text emphasize as important for making learning stronger"
+answers = ["Making learning harder and more personal"]
+alternatives = ["Focusing solely on rote memorization", "Avoiding mistakes during the learning process", "Using only one learning technique consistently"]
+
+[[makeitstick.questions]]
+question = "What is the 'testing effect' as described in Chapter 2"
+answers = ["The phenomenon where recalling information strengthens memory and enhances learning"]
+alternatives = [
+    "A method used to evaluate students' knowledge for grading purposes",
+    "A type of test that is less stressful for students",
+    "A theory that testing decreases students' ability to retain information",
+]
+
+[[makeitstick.questions]]
+question = "Which of the following best describes the impact of retrieval practice on memory consolidation"
+answers = ["It strengthens and multiplies the neural routes for future retrieval"]
+alternatives = [
+    "It weakens neural connections over time",
+    "It makes memory retrieval more difficult in the future",
+    "It has no effect on memory consolidation",
+]
+
+[[makeitstick.questions]]
+question = "What was the main concern of Principal Roger Chamberlain regarding the use of testing at Columbia Middle School"
+answers = ["He feared that testing was primarily a path to rote memorization rather than higher-order thinking"]
+alternatives = [
+    "He believed that testing would lead to higher stress levels among students",
+    "He was worried that testing would disrupt the existing curriculum",
+    "He thought that testing would not be effective in middle school classrooms",
+]
+
+[[makeitstick.questions]]
+question = "What were the results of the study conducted in Columbia Middle School after implementing retrieval practice"
+answers = ["The students who were quizzed scored significantly higher on quizzed material on unit exams compared to non-quizzed material"]
+alternatives = [
+    "Students showed no significant improvement in test scores",
+    "Testing increased anxiety levels and decreases student performance",
+    "Student preferred lectures over testing and quizzing methods",
+]
+
+[[makeitstick.questions]]
+question = "How does delaying feedback on tests impact long-term learning"
+answers = ["It enhances long-term learning because it encourages students to recall information from memory"]
+alternatives = [
+    "It has no impact on learning outcomes",
+    "It worsens long-term retention compared to immediate feedback",
+    "It leads to increased reliance on feedback and reduces independent thinking"
+]
+
+[[makeitstick.questions]]
+question = "Which practice method is identified in the text as often leading to rapid gains in learning but also rapid forgetting"
+answers = ["Massed practice"]
+alternatives = ["Spaced practice", "Interleaved practice", "Varied practice"]
+
+[[makeitstick.questions]]
+question = "Why does spaced practice lead to better retention compared to massed practice"
+answers = ["It provides time for consolidation of memory traces"]
+alternatives = [
+    "It allows for more review sessions",
+    "It makes learning feel easier",
+    "It relies on short-term memory",
+]
+
+[[makeitstick.questions]]
+question = "What surprising result was found in the beanbag study with eight-year-olds"
+answers = ["The group that practiced at mixed distances performed better on the final test"]
+alternatives = [
+    "The group that practiced tossing at mixed distances performed worse than those who practiced at a single distance",
+    "The group that practiced at a fixed distance performed better on the final test",
+    "There was no difference in performance between the two groups",
+]
+
+[[makeitstick.questions]]
+question = "How does interleaved practice differ from massed practice"
+answers = ["Interleaved practice involves practicing multiple skills in random sequences"]
+alternatives = [
+    "Interleaved practice focuses on a single skill repeated multiple times",
+    "Interleaved practice requires more frequent review sessions",
+    "Interleaved practice is less effective for long-term retention",
+]
+
+[[makeitstick.questions]]
+question = "What is one major challenge students face when engaging in interleaved practice"
+answers = ["They find the learning process slower and more confusing"]
+alternatives = [
+    "The quickly master each skill",
+    "They receive immediate positive feedback",
+    "They experience rapid forgetting of the material",
+]
+
+[[makeitstick.questions]]
+question = "What is meant by the term 'desirable difficulties'"
+answers = ["Obstacles that slow down learning, but lead to stronger, more enduring knowledge"]
+alternatives = [
+    "Challenges that impede learning and reduce retention",
+    "Distractions that make learning more complex",
+    "Tasks that are easy and enjoyable, enhancing memory retention",
+]
+
+[[makeitstick.questions]]
+question = "Which of the following practices is described as ineffective for long-term learning"
+answers = "Massed Practice"
+alternatives = [
+    "Spaced Practice",
+    "Interleaving Practice",
+    "Retrieval Pratice",
+]
+
+[[makeitstick.questions]]
+question = "In the context of learning, what is 'retrieval practice'"
+answers = "Testing oneself on material after some time has passed"
+alternatives = [
+    "Reading and reviewing notes multiple times",
+    "Memorizing information through repetition",
+    "Watching demonstrations of the material being learned",
+]
+
+[[makeitstick.questions]]
+question = "Which of the following is an example of 'generation'"
+answers = "Solving a problem before being shown the correct method"
+alternatives = [
+    "Memorizing a list of terms",
+    "Re-reading a chapter of a textbook",
+    "Listening to a lecture on the subject",
+]
+
+[[makeitstick.questions]]
+question = "What did the Cal Poly baseball team experiment demonstrate about learning"
+answers = "Randomly interspersed practice leads to better retention and skill development"
+alternatives = [
+    "Massed practice is more effective for long-term learning",
+    "Repeated exposure to the same task leads to quicker mastery",
+    "Physical training has no effect on cognitive learning processes",
+]
+
+[[makeitstick.questions]]
+question = "What is metacognition"
+answers = "The process of monitoring and adjusting one's thinking and actions during problem-solving"
+alternatives = [
+    "The ability to perform tasks without conscious thought",
+    "A state of confusion when analyzing complex problems",
+    "A method of memorization based on repetition",
+]
+
+[[makeitstick.questions]]
+question = "According to Daniel Kahneman's theory, which system is responsible for quick, intuitive decisions"
+answers = "System 1"
+alternatives = [
+    "System 2",
+    "Both System 1 and System 2 equally",
+    "Neither System 1 nor System 2",
+]
+
+[[makeitstick.questions]]
+question = "Which of the following is a characteristic of cognitive biases"
+answers = "They distort our judgment and decision-making"
+alternatives = [
+    "They always lead to correct judgments",
+    "They only occur in untrained individuals",
+    "They are caused by external factors only",
+]
+
+[[makeitstick.questions]]
+question = "What is the 'curse of knowledge'"
+answers = "The tendency of experts to underestimate the difficulty others face when learning a new concept"
+alternatives = [
+    "The tendency to believe you know less than you actually do",
+    "The inability to remember information you once knew",
+    "The overwhleming pressure to know everything in a given subject",
+]
+
+[[makeitstick.questions]]
+question = "Which example illustrates how memory can be distorted"
+answers = "Remembering a conversation that never occurred after vividly imagining it"
+alternatives = [
+    "People recalling a story exactly as it happened",
+    "Recalling unrelated events clearly after a traumatic experience",
+    "Developing false memories only when under hypnosis",
+]
+
+[[makeitstick.questions]]
+question = "What is a significant problem with the learning styles theory"
+answers = "It lacks consistent scientific evidence to support its claims"
+alternatives = [
+    "It overemphasizes the role of intelligence in learning",
+    "It only applies to early childhood education",
+    "It limits creativity by focusing too much on standardized testing",
+]
+
+[[makeitstick.questions]]
+question = "What learning habit does Bruce Hendry demonstrate that makes him a successful learner"
+answers = "Extracting underlying principles and rules from experiences"
+alternatives = [
+    "Relying on mentors for all his business decisions",
+    "Memorizing specific examples from his past ventures",
+    "Avoiding risks by sticking to familiar investments",
+]
+
+[[makeitstick.questions]]
+question = "What is the key concept behind Robert Sternberg's theory of 'Successful Intelligence'"
+answers = "Intelligence consists of three components: analytical, creative, and practical intelligence"
+alternatives = [
+    "Intelligence is fixed from birth and does not change",
+    "Success in learning comes from focusing on one's strengths alone",
+    "Only IQ tests can measure intelligence accurately",
+]
+
+[[makeitstick.questions]]
+question = "Which of the following best describes the concept of 'structure building'"
+answers = "The process of organizing new information into a coherent mental framework"
+alternatives = [
+    "The ability to memorize multiple examples for future recall",
+    "Learning exclusively through visual or auditory means",
+    "Learning through repeated exposure to the same material without variation",
+]
+
+[[makeitstick.questions]]
+question = "What advantage does 'dynamic testing' offer over traditional testing methods"
+answers = "It helps identify weaknesses and refocus learning to improve performance"
+alternatives = [
+    "It focuses only on strengths and areas of success",
+    "It assesses a fixed level of intelligence at a given moment",
+    "It ignores areas of weakness to avoid demotivating the learner",
+]
+
+[[makeitstick.questions]]
+question = "What was the main outcome of Walter Mischel's marshmallow experiment"
+answers = "Children who waited for the second marshmallow were more successful in later life"
+alternatives = [
+    "Children who waited for the second marshmallow were better at academic subjects",
+    "All children who participated successfully resisted temptation",
+    "The study showed that self-discipline could not be taught",
+]
+
+[[makeitstick.questions]]
+question = "What is neuroplasticity"
+answers = "The brain's capacity to create new synapses and adapt its structure through life"
+alternatives = [
+    "The ability of the brain to fix itself after birth without external influences",
+    "The theory that brain function is genetically determined and cannot change",
+    "The process of aging that leads to a decline in brain function",
+]
+
+[[makeitstick.questions]]
+question = "What was James Paterson's initial motivation for learning mnemonic techniques"
+answers = "To ace his exams without fully mastering the material"
+alternatives = [
+    "To perform better in memory competitions",
+    "To increase his overall IQ",
+    "To combat a family history of Alzheimer's disease",
+]
+
+[[makeitstick.questions]]
+question = "Which of the following is a key feature of deliberate practice"
+answers = "Solitary, goal-directed effort focused on surpassing current skill levels"
+alternatives = [
+    "Practicing in groups to enhance motivation",
+    "Repetitive tasks designed to increase IQ",
+    "Avoiding feedback to maintain independence",
+]
+
+[[makeitstick.questions]]
+question = "How do mnemonic devices help in memory retention"
+answers = "They help organize learned material for quick retrieval using vivd associations"
+alternatives = [
+    "They enhance the brain's fluid intelligence",
+    "They serve as shortcuts that eliminate the need for deeper understanding",
+    "They replace the need for spaced retrieval practice",
+]
+
+[[makeitstick.questions]]
+question = "What is the primary purpose of retrieval practice"
+answers = "To strengthen memory by recalling information without looking at the text"
+alternatives = [
+    "To enhance memorization through repeated exposure",
+    "To create fluency with the text",
+    "To memorize peripheral details",
+]
+
+[[makeitstick.questions]]
+question = "Why is self-quizzing considered more effective than rereading"
+answers = "It helps focus on central ideas and improves long-term recall"
+alternatives = [
+    "It increases familiarity with the text",
+    "It gives a sense of fluency in the material",
+    "It reduces the amount of time needed to study",
+]
+
+[[makeitstick.questions]]
+question = "How does spaced practice differ from massed practice"
+answers = "Spaced practice involves reviewing material multiple times with intervals in between"
+alternatives = [
+    "Spaced practice focuses on repetitive study in a single session",
+    "Massed practice is more effective than spaced practice for long-term memory",
+    "Spaced practice requires you to focus on only one topic at a time",
+]
+
+[[makeitstick.questions]]
+question = "What is the benefit of making errors during retrieval practice"
+answers = "It strengthens memory if the mistakes are corrected"
+alternatives = [
+    "It sets you back in your learning process",
+    "It indicates a lack of progress",
+    "It should be avoided to minimize frustration",
+]
+
+[[makeitstick.questions]]
+question = "Why does massed practice create a false sense of mastery"
+answers = "It leads to short-term gains that quickly fade"
+alternatives = [
+    "It helps you retain information for the long term",
+    "It strengthens your grasp on the material",
+    "It works best when preparing for exams",
+]
+
+[[makeitstick.questions]]
+question = "What is interleaved practice"
+answers = "Alternating between different topics to reinforce learning"
+alternatives = [
+    "Studying one problem type repeatedly until mastered",
+    "Reviewing one subject before moving on to another",
+    "Focusing on similar problem types to reinforce memory",
+]
+
+[[makeitstick.questions]]
+question = "Why is elaboration a powerful learning strategy"
+answers = "It allows you to discover new layers of meaning and make connections"
+alternatives = [
+    "It simplifies the material for better retention",
+    "It helps you memorize facts without deeper understanding",
+    "It encourages cramming before exams",
+]
+
+[[makeitstick.questions]]
+question = "How does reflection ehance learning"
+answers = "By combining retrieval practice and elaboration to deepen understanding"
+alternatives = [
+    "By reinforcing factual information through repetition",
+    "By replacing the need for spaced practice",
+    "By improving your ability to quickly review material before an exam",
+]
+
+[[makeitstick.questions]]
+question = "What is calibration in the context of learning"
+answers = "Aligning your sense of mastery with objective feedback"
+alternatives = [
+    "Estimating your performance based on past experience",
+    "Creating a self-paced study schedule",
+    "Predicting exam questions based on textbook familiarity",
+]
+
+[[makeitstick.questions]]
+question = "Which of the following best describes the use of mnemonic devices in learning"
+answers = "They are tools for creating mental structures that aid in memory retrieval"
+alternatives = [
+    "Mnemonic devices improve critical thinking skills",
+    "They help simplify complex information into manageable steps",
+    "They enhance deep understanding of the material",
+]
+
+[cpre]
+label = "CISSP Pre-Assessment"
+
+[[cpre.questions]]
+question = "Which of the following types of access control seeks to discover evidence of unwanted, unauthorized, or illicit behavior or activity"
+answers = ["Detective"]
+alternatives = ["Preventive", "Deterrent", "Corrective"]
+explanation = """
+    Detective access controls are used to discover (and document) unwanted or unauthorized activity.
+"""
+
+[[cpre.questions]]
+question = "Define and detail the aspects of password selection that distinguish good password choices from ultimately poor password choices"
+answers = ["All of the above"]
+alternatives = ["Difficult to guess or unpredictable", "Meet minimum length requirements", "Meet specific complexity requirements"]
+explanation = """
+    Strong password choices are difficult to guess, unpredictable, and of specified minimum lengths to ensure that password entries cannot be 
+    computationally determined. They may be randomly generated and utilize all the alphabetic, numeric, and punctuation characters; they should never
+    be written down or shared; they should not be stored in pubicly accessible or generally readable locations; and they shouldn't be transmitted in
+    the clear.
+"""
+
+[[cpre.questions]]
+question = "Which of the following is most likely to detect DoS attacks"
+answers = ["Network-based IDS"]
+alternatives = [
+    "Host-based IDS",
+    "Vulnerability Scanner",
+    "Penetration Testing",
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = "Which of the following is considered a denial-of-service attack"
+answers = ["While surfing the Web, sending to a web server a malformed URL that causes the system to consume 100 percent of the CPU"]
+alternatives = [
+    "Pretending to be a technical manager over the phone and asking a receptionist to change their password",
+    "Intercepting network traffic by copying the packets as they pass through a specific subnet",
+    "Sending message packets to a recipient who did not request them simply to be annoying",
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = "At which layer of the OSI model does a router operate"
+answers = ["Network Layer"]
+alternatives = [
+    "Layer 1",
+    "Transport Layer",
+    "Layer 5",
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = "Which type of firewall automatically adjusts its filtering rules based on the content of the traffic of existing sessions"
+answers = ["Dynamic Packet Filtering"]
+alternatives = [
+    "Static Packet Filtering",
+    "Application-level Gateway",
+    "Circut Level Gateway",
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[cpre.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
