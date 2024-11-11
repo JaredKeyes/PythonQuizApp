@@ -286,7 +286,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "Which of the following practices is described as ineffective for long-term learning"
-answers = "Massed Practice"
+answers = ["Massed Practice"]
 alternatives = [
     "Spaced Practice",
     "Interleaving Practice",
@@ -295,7 +295,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "In the context of learning, what is 'retrieval practice'"
-answers = "Testing oneself on material after some time has passed"
+answers = ["Testing oneself on material after some time has passed"]
 alternatives = [
     "Reading and reviewing notes multiple times",
     "Memorizing information through repetition",
@@ -304,7 +304,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "Which of the following is an example of 'generation'"
-answers = "Solving a problem before being shown the correct method"
+answers = ["Solving a problem before being shown the correct method"]
 alternatives = [
     "Memorizing a list of terms",
     "Re-reading a chapter of a textbook",
@@ -313,7 +313,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "What did the Cal Poly baseball team experiment demonstrate about learning"
-answers = "Randomly interspersed practice leads to better retention and skill development"
+answers = ["Randomly interspersed practice leads to better retention and skill development"]
 alternatives = [
     "Massed practice is more effective for long-term learning",
     "Repeated exposure to the same task leads to quicker mastery",
@@ -322,7 +322,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "What is metacognition"
-answers = "The process of monitoring and adjusting one's thinking and actions during problem-solving"
+answers = ["The process of monitoring and adjusting one's thinking and actions during problem-solving"]
 alternatives = [
     "The ability to perform tasks without conscious thought",
     "A state of confusion when analyzing complex problems",
@@ -331,7 +331,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "According to Daniel Kahneman's theory, which system is responsible for quick, intuitive decisions"
-answers = "System 1"
+answers = ["System 1"]
 alternatives = [
     "System 2",
     "Both System 1 and System 2 equally",
@@ -340,7 +340,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "Which of the following is a characteristic of cognitive biases"
-answers = "They distort our judgment and decision-making"
+answers = ["They distort our judgment and decision-making"]
 alternatives = [
     "They always lead to correct judgments",
     "They only occur in untrained individuals",
@@ -349,7 +349,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "What is the 'curse of knowledge'"
-answers = "The tendency of experts to underestimate the difficulty others face when learning a new concept"
+answers = ["The tendency of experts to underestimate the difficulty others face when learning a new concept"]
 alternatives = [
     "The tendency to believe you know less than you actually do",
     "The inability to remember information you once knew",
@@ -358,7 +358,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "Which example illustrates how memory can be distorted"
-answers = "Remembering a conversation that never occurred after vividly imagining it"
+answers = ["Remembering a conversation that never occurred after vividly imagining it"]
 alternatives = [
     "People recalling a story exactly as it happened",
     "Recalling unrelated events clearly after a traumatic experience",
@@ -367,7 +367,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "What is a significant problem with the learning styles theory"
-answers = "It lacks consistent scientific evidence to support its claims"
+answers = ["It lacks consistent scientific evidence to support its claims"]
 alternatives = [
     "It overemphasizes the role of intelligence in learning",
     "It only applies to early childhood education",
@@ -376,7 +376,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "What learning habit does Bruce Hendry demonstrate that makes him a successful learner"
-answers = "Extracting underlying principles and rules from experiences"
+answers = ["Extracting underlying principles and rules from experiences"]
 alternatives = [
     "Relying on mentors for all his business decisions",
     "Memorizing specific examples from his past ventures",
@@ -385,7 +385,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "What is the key concept behind Robert Sternberg's theory of 'Successful Intelligence'"
-answers = "Intelligence consists of three components: analytical, creative, and practical intelligence"
+answers = ["Intelligence consists of three components: analytical, creative, and practical intelligence"]
 alternatives = [
     "Intelligence is fixed from birth and does not change",
     "Success in learning comes from focusing on one's strengths alone",
@@ -394,7 +394,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "Which of the following best describes the concept of 'structure building'"
-answers = "The process of organizing new information into a coherent mental framework"
+answers = ["The process of organizing new information into a coherent mental framework"]
 alternatives = [
     "The ability to memorize multiple examples for future recall",
     "Learning exclusively through visual or auditory means",
@@ -403,7 +403,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "What advantage does 'dynamic testing' offer over traditional testing methods"
-answers = "It helps identify weaknesses and refocus learning to improve performance"
+answers = ["It helps identify weaknesses and refocus learning to improve performance"]
 alternatives = [
     "It focuses only on strengths and areas of success",
     "It assesses a fixed level of intelligence at a given moment",
@@ -412,7 +412,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "What was the main outcome of Walter Mischel's marshmallow experiment"
-answers = "Children who waited for the second marshmallow were more successful in later life"
+answers = ["Children who waited for the second marshmallow were more successful in later life"]
 alternatives = [
     "Children who waited for the second marshmallow were better at academic subjects",
     "All children who participated successfully resisted temptation",
@@ -421,7 +421,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "What is neuroplasticity"
-answers = "The brain's capacity to create new synapses and adapt its structure through life"
+answers = ["The brain's capacity to create new synapses and adapt its structure through life"]
 alternatives = [
     "The ability of the brain to fix itself after birth without external influences",
     "The theory that brain function is genetically determined and cannot change",
@@ -430,7 +430,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "What was James Paterson's initial motivation for learning mnemonic techniques"
-answers = "To ace his exams without fully mastering the material"
+answers = ["To ace his exams without fully mastering the material"]
 alternatives = [
     "To perform better in memory competitions",
     "To increase his overall IQ",
@@ -439,7 +439,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "Which of the following is a key feature of deliberate practice"
-answers = "Solitary, goal-directed effort focused on surpassing current skill levels"
+answers = ["Solitary, goal-directed effort focused on surpassing current skill levels"]
 alternatives = [
     "Practicing in groups to enhance motivation",
     "Repetitive tasks designed to increase IQ",
@@ -448,7 +448,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "How do mnemonic devices help in memory retention"
-answers = "They help organize learned material for quick retrieval using vivd associations"
+answers = ["They help organize learned material for quick retrieval using vivd associations"]
 alternatives = [
     "They enhance the brain's fluid intelligence",
     "They serve as shortcuts that eliminate the need for deeper understanding",
@@ -457,7 +457,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "What is the primary purpose of retrieval practice"
-answers = "To strengthen memory by recalling information without looking at the text"
+answers = ["To strengthen memory by recalling information without looking at the text"]
 alternatives = [
     "To enhance memorization through repeated exposure",
     "To create fluency with the text",
@@ -466,7 +466,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "Why is self-quizzing considered more effective than rereading"
-answers = "It helps focus on central ideas and improves long-term recall"
+answers = ["It helps focus on central ideas and improves long-term recall"]
 alternatives = [
     "It increases familiarity with the text",
     "It gives a sense of fluency in the material",
@@ -475,7 +475,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "How does spaced practice differ from massed practice"
-answers = "Spaced practice involves reviewing material multiple times with intervals in between"
+answers = ["Spaced practice involves reviewing material multiple times with intervals in between"]
 alternatives = [
     "Spaced practice focuses on repetitive study in a single session",
     "Massed practice is more effective than spaced practice for long-term memory",
@@ -484,7 +484,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "What is the benefit of making errors during retrieval practice"
-answers = "It strengthens memory if the mistakes are corrected"
+answers = ["It strengthens memory if the mistakes are corrected"]
 alternatives = [
     "It sets you back in your learning process",
     "It indicates a lack of progress",
@@ -493,7 +493,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "Why does massed practice create a false sense of mastery"
-answers = "It leads to short-term gains that quickly fade"
+answers = ["It leads to short-term gains that quickly fade"]
 alternatives = [
     "It helps you retain information for the long term",
     "It strengthens your grasp on the material",
@@ -502,7 +502,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "What is interleaved practice"
-answers = "Alternating between different topics to reinforce learning"
+answers = ["Alternating between different topics to reinforce learning"]
 alternatives = [
     "Studying one problem type repeatedly until mastered",
     "Reviewing one subject before moving on to another",
@@ -511,7 +511,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "Why is elaboration a powerful learning strategy"
-answers = "It allows you to discover new layers of meaning and make connections"
+answers = ["It allows you to discover new layers of meaning and make connections"]
 alternatives = [
     "It simplifies the material for better retention",
     "It helps you memorize facts without deeper understanding",
@@ -520,7 +520,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "How does reflection ehance learning"
-answers = "By combining retrieval practice and elaboration to deepen understanding"
+answers = ["By combining retrieval practice and elaboration to deepen understanding"]
 alternatives = [
     "By reinforcing factual information through repetition",
     "By replacing the need for spaced practice",
@@ -529,7 +529,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "What is calibration in the context of learning"
-answers = "Aligning your sense of mastery with objective feedback"
+answers = ["Aligning your sense of mastery with objective feedback"]
 alternatives = [
     "Estimating your performance based on past experience",
     "Creating a self-paced study schedule",
@@ -538,7 +538,7 @@ alternatives = [
 
 [[makeitstick.questions]]
 question = "Which of the following best describes the use of mnemonic devices in learning"
-answers = "They are tools for creating mental structures that aid in memory retrieval"
+answers = ["They are tools for creating mental structures that aid in memory retrieval"]
 alternatives = [
     "Mnemonic devices improve critical thinking skills",
     "They help simplify complex information into manageable steps",
