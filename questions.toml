@@ -957,3 +957,53 @@ explanation = """
 
 [sysadmin]
 labels = "Sys Admin Questions"
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
