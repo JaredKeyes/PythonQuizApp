@@ -959,7 +959,7 @@ explanation = """
 labels = "Sys Admin Questions"
 
 [[sysadmin.questions]]
-question = ""
+question = "What is a good interview question?"
 answers = [""]
 alternatives = [
 
