@@ -959,40 +959,46 @@ explanation = """
 labels = "Sys Admin Questions"
 
 [[sysadmin.questions]]
-question = "What is a good interview question?"
-answers = [""]
+question = "What constitutes the core of the Linux operating system"
+answers = ["The Kernel"]
 alternatives = [
-
+    "The Vi Editor",
+    "The Command Line",
+    "The Terminal",
 ]
 explanation = """
 
 """
 
 [[sysadmin.questions]]
-question = ""
-answers = [""]
+question = "Is a directory considered a type of file"
+answers = ["Yes"]
 alternatives = [
-
+    "No",
 ]
 explanation = """
 
 """
 
 [[sysadmin.questions]]
-question = ""
-answers = [""]
+question = "What symbol denotes the top-level directory"
+answers = ["/"]
 alternatives = [
-
+    "~",
+    "@",
+    ":",
 ]
 explanation = """
 
 """
 
 [[sysadmin.questions]]
-question = ""
-answers = [""]
+question = "Which symbol represents the user's home directory"
+answers = ["~"]
 alternatives = [
-
+    "@",
+    "+",
+    "/",
 ]
 explanation = """
 
