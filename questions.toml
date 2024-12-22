@@ -1005,6 +1005,150 @@ explanation = """
 """
 
 [[sysadmin.questions]]
+question = "Which Linux command tallies the total number of lines, words, and characters in a file"
+answers = ["wc"]
+alternatives = [
+    "count",
+    "wcount",
+    "countw",
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = "Which Linux command is employed to delete files"
+answers = ["rm"]
+alternatives = [
+    "remove",
+    "delete",
+    "del",
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
 question = ""
 answers = [""]
 alternatives = [
