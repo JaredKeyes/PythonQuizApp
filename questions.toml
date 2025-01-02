@@ -1029,20 +1029,24 @@ explanation = """
 """
 
 [[sysadmin.questions]]
-question = ""
-answers = [""]
+question = "Which Linux command within the vi editor is employed to remove a single character"
+answers = ["x"]
 alternatives = [
-
+    "d",
+    "r",
+    "c",
 ]
 explanation = """
 
 """
 
 [[sysadmin.questions]]
-question = ""
-answers = [""]
+question = "Which Linux command reveals all hidden files"
+answers = ["ls -a"]
 alternatives = [
-
+    "ls",
+    "ls -h",
+    "dir -a",
 ]
 explanation = """
 
