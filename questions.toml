@@ -967,6 +967,160 @@ explanation = """
 labels = "Sys Admin Questions"
 
 [[sysadmin.questions]]
+question = "What constitutes the core of the Linux operating system"
+answers = ["The Kernel"]
+alternatives = [
+    "The Vi Editor",
+    "The Command Line",
+    "The Terminal",
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = "Is a directory considered a type of file"
+answers = ["Yes"]
+alternatives = [
+    "No",
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = "What symbol denotes the top-level directory"
+answers = ["/"]
+alternatives = [
+    "~",
+    "@",
+    ":",
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = "Which symbol represents the user's home directory"
+answers = ["~"]
+alternatives = [
+    "@",
+    "+",
+    "/",
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = "Which Linux command tallies the total number of lines, words, and characters in a file"
+answers = ["wc"]
+alternatives = [
+    "count",
+    "wcount",
+    "countw",
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = "Which Linux command is employed to delete files"
+answers = ["rm"]
+alternatives = [
+    "remove",
+    "delete",
+    "del",
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = "Which Linux command within the vi editor is employed to remove a single character"
+answers = ["x"]
+alternatives = [
+    "d",
+    "r",
+    "c",
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = "Which Linux command reveals all hidden files"
+answers = ["ls -a"]
+alternatives = [
+    "ls",
+    "ls -h",
+    "dir -a",
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
+question = ""
+answers = [""]
+alternatives = [
+
+]
+explanation = """
+
+"""
+
+[[sysadmin.questions]]
 question = ""
 answers = [""]
 alternatives = [
