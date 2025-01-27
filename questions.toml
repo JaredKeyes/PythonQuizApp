@@ -616,40 +616,48 @@ explanation = """
 """
 
 [[cpre.questions]]
-question = ""
-answers = [""]
+question = "A VPN can be established over which of the following"
+answers = ["All of the above"]
 alternatives = [
-
+    "Wireless LAN connection",
+    "Remote access dial-up connection",
+    "WAN link",
 ]
 explanation = """
 
 """
 
 [[cpre.questions]]
-question = ""
-answers = [""]
+question = "What type of malware uses social engineering to trick a victim into installing it"
+answers = ["Trojan Horse"]
 alternatives = [
-
+    "Viruses",
+    "Worms",
+    "Logic Bomb",
 ]
 explanation = """
 
 """
 
 [[cpre.questions]]
-question = ""
-answers = [""]
+question = "The CIA Triad comprises what elements"
+answers = ["Availability, Confidentiality, Integrity"]
 alternatives = [
-
+    "Contiguousness, Interoperable, Arranged",
+    "Authentication, Authorization, Accountability",
+    "Capable, Available, Integral",
 ]
 explanation = """
 
 """
 
 [[cpre.questions]]
-question = ""
-answers = [""]
+question = "Which of the following is not a required component in the support of accountability"
+answers = ["Privacy"]
 alternatives = [
-
+    "Auditing",
+    "Authentication",
+    "Authorization",
 ]
 explanation = """
 
