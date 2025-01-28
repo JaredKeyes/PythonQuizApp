@@ -664,80 +664,101 @@ explanation = """
 """
 
 [[cpre.questions]]
-question = ""
-answers = [""]
+question = "Which of the following is not a defense against collusion"
+answers = ["Group User Accounts"]
 alternatives = [
-
+    "Seperation of Duties",
+    "Restricted Job Responsibilities",
+    "Job Rotation",
 ]
 explanation = """
 
 """
 
 [[cpre.questions]]
-question = ""
-answers = [""]
+question = "A data custodian is responsible for securing resources after ___________ has assigned the resource a security label"
+answers = ["The Data Owner"]
 alternatives = [
-
+    "Senior Management",
+    "An Auditor",
+    "Security Staff",
 ]
 explanation = """
 
 """
 
 [[cpre.questions]]
-question = ""
-answers = [""]
+question = "In what phase of the Capability Maturity Model for Software (SW-CMM) are quantitative measures utilized to gain a detailed understanding of the software development process"
+answers = ["Managed"]
 alternatives = [
-
+    "Repeatable",
+    "Defined",
+    "Optimizing",
 ]
 explanation = """
 
 """
 
 [[cpre.questions]]
-question = ""
-answers = [""]
+question = "Which one of the following is a layer of the ring protection scheme that is not normally implemented in practice"
+answers = ["Layer 1"]
 alternatives = [
-
+    "Layer 0",
+    "Layer 3",
+    "Layer 4",
 ]
 explanation = """
 
 """
 
 [[cpre.questions]]
-question = ""
-answers = [""]
+question = "What is the last phase of the TCP/IP three-way handshake sequence"
+answers = ["ACK packet"]
 alternatives = [
-
+    "SYN packet",
+    "NAK packet",
+    "SYN/ACK packet",
 ]
 explanation = """
 
 """
 
 [[cpre.questions]]
-question = ""
-answers = [""]
+question = "Which one of the following vulnerabilities would best be countered by adequate parameter checking"
+answers = ["Buffer Overflow"]
 alternatives = [
-
+    "Time of Check to Time of Use",
+    "SYN Flood",
+    "Distributed Denial of Service",
 ]
 explanation = """
 
 """
 
 [[cpre.questions]]
-question = ""
-answers = [""]
+question = """What is the value of the logical operation shown here?
+X: 0 1 1 0 1 0
+Y: 0 0 1 1 0 1
+---------------
+X v Y: 
+"""
+answers = ["0 1 1 1 1 1"]
 alternatives = [
-
+    "0 1 1 0 1 0",
+    "0 0 1 0 0 0",
+    "0 0 1 1 0 1",
 ]
 explanation = """
 
 """
 
 [[cpre.questions]]
-question = ""
-answers = [""]
+question = "In what type of cipher are the letters of the plain-text message rearranged to form the cipher text"
+answers = ["Transposition Cipher"]
 alternatives = [
-
+    "Substitution Cipher",
+    "Block Cipher",
+    "Onetime Pad",
 ]
 explanation = """
 
