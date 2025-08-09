@@ -985,7 +985,7 @@ explanation = """
 """
 
 [sysadmin]
-labels = "Sys Admin Questions"
+label = "Sys Admin Questions"
 
 [[sysadmin.questions]]
 question = "What constitutes the core of the Linux operating system"
@@ -1190,3 +1190,447 @@ alternatives = [
 explanation = """
 
 """
+
+[aws]
+label = "AWS Questions"
+
+[[aws.questions]]
+question = "What does STS stand for in AWS"
+answers = ["Security Token Service"]
+alternatives = [
+    "Simple Token Service",
+    "Secure Transport Service",
+    "Session Token Service",
+]
+
+[[aws.questions]]
+question = """What is the purpose of the following command?
+
+PRINCIPAL_ARN=$(aws sts get-caller-identity --query Arn --output text)"""
+answers = ["Calls STS to fetch the Amazon Resource Name of the currently authenticated identity and assigns it to PRINCIPAL_ARN"]
+alternatives = [
+    "Retrieves your AWS account ID and stores it in the PRINCIPAL_ARN variable",
+    "Queries your AWS CLI configuration for the Amazon Resource Name and saves it into PRINCIPAL_ARN",
+    "Gets the username of the current IAM user and writes it into PRINCIPAL_ARN",
+]
+
+[awsdev]
+label = "AWS Dev - Associate"
+
+[[awsdev.questions]]
+question = "A company is re-architecting a monolithic application into microservices on AWS. Which of the following are advantages of a microservices (loosely coupled) architecture compared to a monolith? (Select TWO)"
+answers = ["Each microservice can be scaled independently based on demand", "Different microservices can be developed and deployed independently of each other"]
+alternatives = [
+"It completely eliminates the need for network communication between components",
+"All microservices are deployed together, making release management easier",
+"Troubleshooting is simpler since all logs and errors are centralized in one service"
+]
+explanation = """Microservices break an application into independent components that can be scaled and updated individually, improving agility and scalability. For example, each service can scale or be deployed on its own schedule without affecting others. In contrast, a monolith requires scaling or deploying the entire application as one unit. This loosely coupled approach also isolates failures better (one service failure is less likely to crash the whole system). Microservices do not eliminate network communication — in fact, they use network calls between components (monoliths avoid that by calling code in-process). Also, debugging can be more complex in microservices because logs are distributed, not centralized in one place. Finally, microservices have separate deployment pipelines (you do *not* deploy all services together), which is the opposite of a monolithic release process."""
+
+[[awsdev.questions]]
+question = "A developer is implementing a retry mechanism for an API call that can sometimes fail. Why is it important that the operation being retried is idempotent?"
+answers = ["So that repeating the operation multiple times has no additional effects, preventing duplicate actions if a retry occurs"]
+alternatives = [
+"It makes the operation run faster on each subsequent attempt",
+"It ensures only authorized users can repeat the operation",
+"It allows the operation to run multiple times in parallel without issues"
+]
+explanation = """Idempotency means that performing the same action more than once results in the same outcome as doing it once. In other words, if a request is executed multiple times, it won’t cause unintended side effects like duplicate entries or repeated charges. This property is crucial when implementing retries—if a call fails and is retried, an idempotent operation won’t, for example, create a second record or repeat an action beyond the first effect. Idempotency doesn’t inherently make an operation faster on retries, isn’t about authorization, and isn’t specifically about parallelism; it’s about safely retrying the *same* action without harmful consequences."""
+
+[[awsdev.questions]]
+question = "A web application needs to scale out to multiple servers. Why is it recommended to make the application stateless?"
+answers = ["So any server can handle any request, allowing easy scaling and recovery without session data tied to one instance"]
+alternatives = [
+"It allows each user’s session to be tied to one specific server for efficiency",
+"It eliminates the need for any data storage backend",
+"It enables storing user session data in memory for faster retrieval"
+]
+explanation = """Stateless applications do not rely on storing session information on any single server. This means any server instance can handle any request because there’s no requirement to “stick” a user to the same server for session data. As a result, you can add or remove servers easily (like behind a load balancer) and recover from instance failures without impacting users – new instances can pick up where others left off. By contrast, if each user’s session is kept in one specific server’s memory (stateful design), scaling out is difficult and a server failure would lose active user sessions. Stateless design still requires a backend store (for session or shared data), but that store is external (e.g., a database or cache) rather than the app server’s memory."""
+
+\[\[awsdev.questions]]
+question = "A new feature requires processing user-uploaded files to generate a report. The team is debating doing this work synchronously (during the upload request) vs. asynchronously after the upload. When is using an asynchronous processing approach (e.g., via an SQS queue and a worker) preferable?"
+answers = \["When the task can be performed in the background without making the user wait, improving responsiveness and decoupling the processing from the user request"]
+alternatives = \[
+"When the client expects the operation to complete within the same request",
+"When the processing must occur inline to ensure it's finished before proceeding",
+"When the overhead of using a queue or event mechanism is unacceptable"
+]
+explanation = """Asynchronous processing is ideal if the work can be done “out-of-band” — that is, the user doesn’t need the result immediately. For example, if generating the report takes several seconds or minutes, it's better to have the file upload request quickly acknowledge success and then have a background process (triggered via a queue or event) generate the report. This way, the user isn’t kept waiting and the system remains responsive. It also decouples the upload component from the processing component. If the result were needed immediately by the user, synchronous would be required. The slight overhead of using a queue or event is usually worth the benefit; if using a queue was truly unacceptable overhead, then that scenario would favor synchronous processing (since asynchronous wouldn’t be suitable)."""
+
+\[\[awsdev.questions]]
+question = "An application calls an external API which occasionally fails or times out. What is the best way to make the application more fault-tolerant to these transient errors?"
+answers = \["Implement a retry mechanism with exponential backoff for the external API calls"]
+alternatives = \[
+"Immediately retry in a tight loop until the service responds",
+"Abort the operation on the first failure to prevent further errors",
+"Ignore the error and proceed as if the call succeeded"
+]
+explanation = """To handle intermittent failures gracefully, the application should retry the external API call, using exponential backoff (increasing delays between attempts). This approach increases the likelihood of a successful call on a subsequent try while avoiding flooding the external service with rapid retries. Immediately hammering the API with a tight loop of retries can overwhelm the service (and usually will still fail). Giving up after the first failure reduces resilience (a temporary glitch could have been resolved with a retry). Silently ignoring the error is dangerous because the operation didn’t actually complete – instead, the application should detect the failure and handle it (via retries or fallback logic)."""
+
+\[\[awsdev.questions]]
+question = "A developer needs one component of an application to send messages that multiple other services will receive in parallel, and some receivers should only process certain types of events. Which AWS service is best suited for this publish/subscribe use case with message filtering?"
+answers = \["Amazon EventBridge"]
+alternatives = \[
+"Amazon Simple Notification Service (SNS)",
+"Amazon Simple Queue Service (SQS)",
+"AWS Step Functions"
+]
+explanation = """Amazon EventBridge is ideal for a use case where you have a publisher sending events and multiple subscribers, with fine-grained filtering. EventBridge acts as an event bus: you can define rules to route events to many targets, and those rules can filter events based on content or pattern. SNS also provides pub/sub messaging with multiple subscribers, but its filtering is limited to message attributes and it doesn’t natively support complex event pattern matching like EventBridge. SQS is a queue for point-to-point messaging (it’s better for one consumer group rather than fan-out to many). AWS Step Functions is for orchestrating workflows, not for broad event distribution to multiple services."""
+
+\[\[awsdev.questions]]
+question = "Which of the following services can directly trigger an AWS Lambda function when an event occurs? (Select THREE)"
+answers = \["Amazon S3", "Amazon DynamoDB Streams", "Amazon SNS"]
+alternatives = \[
+"Amazon EC2",
+"Amazon RDS"
+]
+explanation = """AWS Lambda can be triggered by many services. For example, Amazon S3 can invoke a Lambda function when a new object is created (via S3 event notifications), DynamoDB Streams can trigger a Lambda when data in a table is modified, and Amazon SNS can trigger a Lambda as one of its subscribers. Amazon EC2 and Amazon RDS, on the other hand, do not have direct integrations to call Lambda on events. (EC2 instance events can be captured by EventBridge and then Lambda, and RDS can publish events to SNS which could trigger Lambda, but they cannot invoke Lambda *directly* by themselves.)"""
+
+\[\[awsdev.questions]]
+question = "A Lambda function needs to access an Amazon RDS database in a private subnet and also call an external API on the Internet. How can you enable both capabilities?"
+answers = \["Configure the Lambda function to run in the VPC (in the private subnet with the database), and ensure a NAT Gateway is in place for outbound Internet access"]
+alternatives = \[
+"Place the Lambda function in a public subnet with an Internet Gateway; it will then have access to the RDS instance and the Internet",
+"Run the Lambda function in the private subnet; it can automatically access the Internet from there without any additional configuration",
+"It is impossible for a Lambda in a VPC to access the Internet"
+]
+explanation = """To reach a private RDS, the Lambda should be configured to run inside the same VPC and subnet(s) as the database (and use the appropriate security group so it can connect to RDS). And to call external APIs from that private subnet, the Lambda’s subnet route table should have a route through a NAT Gateway in a public subnet. The NAT Gateway provides the Lambda outbound internet access. Simply putting the Lambda in a public subnet isn’t sufficient in this scenario (Lambda functions don't get a public IP, and that setup wouldn’t help access the private DB either). Running in a private subnet without NAT would let it reach the database, but it would have *no internet access*. And it is definitely possible for a VPC-based Lambda to access the internet—using a NAT is the standard solution."""
+
+\[\[awsdev.questions]]
+question = "A team needs to ingest and process a continuous stream of events (millions per hour) in real time, with multiple consumers processing the data in parallel. Which AWS service is best suited for this use case?"
+answers = \["Amazon Kinesis Data Streams"]
+alternatives = \[
+"Amazon SQS",
+"Amazon EventBridge",
+"Amazon SNS"
+]
+explanation = """Amazon Kinesis Data Streams is designed for high-throughput, real-time streaming of data. It can continuously capture and deliver millions of events per hour and feed them to multiple processing applications (consumers) in parallel thanks to its shard-based design. Neither SQS nor SNS are as well-suited for big *continuous* streams of data with multiple independent consumers; SQS is mainly for point-to-point queues (and though you can have multiple consumers, they compete for messages rather than all getting every message) and SNS delivers each message to subscribers but doesn’t support replay or large-scale streaming like Kinesis. EventBridge is for discrete events and has lower throughput limits compared to Kinesis when dealing with huge volumes of streaming data."""
+
+\[\[awsdev.questions]]
+question = "A developer needs to upload a 100GB file to Amazon S3. What is the best way to upload this large file efficiently?"
+answers = \["Use the S3 multipart upload capability to upload the file in parts"]
+alternatives = \[
+"Use a single PutObject API call to upload the entire file at once",
+"Upgrade to a more powerful instance type to make the upload faster",
+"Manually split the file into smaller chunks and upload them as separate objects"
+]
+explanation = """For very large files, Amazon S3's multipart upload is the recommended approach. It breaks the file into parts and uploads them in parallel, which is more efficient and resilient to network issues. In fact, files over 5 GB *must* use multipart upload. A single PutObject call can't handle 100GB (there is a 5GB limit per PUT) and would be risky (a failure means restarting from scratch). Using a bigger instance doesn't overcome S3’s upload limits or significantly speed up a single huge transfer. Splitting the file into separate objects isn't desirable if you need it as one object; multipart upload lets you upload parts and combine them into one object in S3."""
+
+\[\[awsdev.questions]]
+question = "A developer needs to retrieve items from a DynamoDB table using an attribute that is NOT part of the primary key. What is the recommended solution to efficiently get these items?"
+answers = \["Create a Global Secondary Index (GSI) on that attribute and query the index"]
+alternatives = \[
+"Use a DynamoDB Scan operation to retrieve all items and filter the results in code",
+"Call GetItem with the attribute as the key (even if it's not in the primary key schema)",
+"Run a SQL query against the DynamoDB table for that attribute"
+]
+explanation = """If you need to query DynamoDB by a non-key attribute, the proper solution is to create a Global Secondary Index on that attribute. A GSI gives that attribute its own index allowing efficient query lookups. Scanning the entire table and filtering is very slow and costly at scale, as it reads every item. GetItem won't work with a non-key attribute at all (GetItem requires the primary key). And while DynamoDB now has a PartiQL interface for SQL-like operations, under the hood it still requires an index or does a scan for non-key attributes—there's no hidden SQL magic to query by arbitrary attribute without an index."""
+
+\[\[awsdev.questions]]
+question = "A developer has several AWS Lambda functions that need to execute in sequence and sometimes in parallel, with certain steps only happening if previous steps succeed. Which service can help orchestrate this workflow with minimal custom code?"
+answers = \["AWS Step Functions"]
+alternatives = \[
+"Amazon SQS",
+"AWS CodePipeline",
+"Amazon Simple Workflow Service (SWF)"
+]
+explanation = """AWS Step Functions is the ideal service to coordinate complex workflows of Lambda functions (and other services) with branching, parallel execution, and error handling—all defined in a state machine, rather than in code. It handles sequencing and conditional logic with little custom code. Amazon SQS is just a queue and would require custom code to coordinate multi-step processes. AWS CodePipeline is for CI/CD (code build/test/deploy) pipelines, not arbitrary app workflow logic. Amazon SWF is an older orchestration service that could do similar workflows, but it requires writing a lot more custom logic (Step Functions is the newer, managed solution for minimal code)."""
+
+\[\[awsdev.questions]]
+question = "A developer wants to locally test and debug a serverless application (Lambda functions and API Gateway) before deploying it. Which tool can they use?"
+answers = \["The AWS SAM CLI (Serverless Application Model CLI) for local testing"]
+alternatives = \[
+"AWS CloudFormation",
+"AWS CodeDeploy",
+"AWS Cloud9"
+]
+explanation = """The AWS SAM CLI allows developers to simulate Lambda and API Gateway locally. They can invoke functions on their machine and even emulate API Gateway endpoints to test the full serverless application before deployment. CloudFormation is for deploying infrastructure (not a local test tool). CodeDeploy is for deploying updates to servers or Lambdas, not for local debugging. AWS Cloud9 is a cloud IDE (which does provide an environment to edit/run code, but by itself it doesn't simulate API Gateway and event sources the way SAM CLI does)."""
+
+\[\[awsdev.questions]]
+question = "A Lambda function needs to process very large files (multiple GB) and requires a file system to read/write intermediate data that persists across invocations. What solution can support this in AWS?"
+answers = \["Attach an Amazon EFS (Elastic File System) file system to the Lambda function for persistent, shared storage"]
+alternatives = \[
+"Rely on the Lambda's /tmp directory to store the files between invocations",
+"Store the files in Amazon S3 and access them via the S3 API",
+"Increase the Lambda function's memory allocation to get more temporary disk space"
+]
+explanation = """AWS Lambda can be configured to mount an Amazon EFS file system, which provides a persistent, scalable POSIX file system accessible across invocations (and even by multiple Lambdas or EC2 instances). EFS is the appropriate solution for multi-GB data that needs to be processed with normal file semantics or shared across runs. The Lambda /tmp directory is ephemeral—data there does not persist once the execution environment is recycled (and it's limited in size, by default 512 MB, even with the newer configurable 10 GB limit it might not be enough, and it isn't shared across different concurrent instances). Storing data in S3 is durable, but it's not a mounted file system for random read/write; it requires using the S3 API to upload/download objects (which can be slower or more cumbersome for frequent intermediate reads/writes). Increasing Lambda memory can increase /tmp size up to a limit, but it still doesn't persist beyond the function's life or share data between concurrent executions."""
+
+\[\[awsdev.questions]]
+question = "A development team wants to quickly build, deploy, and host a full-stack web application on AWS (a React frontend with a serverless backend and user authentication) without managing servers. Which AWS service or framework can streamline this process?"
+answers = \["AWS Amplify"]
+alternatives = \[
+"AWS Elastic Beanstalk",
+"AWS CodeStar",
+"Amazon Lightsail"
+]
+explanation = """AWS Amplify is a development platform that simplifies building full-stack applications. It provides libraries and CLI tools to set up cloud backend resources (like authentication via Cognito, APIs, storage) and also offers hosting for web apps with a built-in CI/CD workflow. This allows developers to focus on app code rather than managing servers. Elastic Beanstalk automates infrastructure for web apps but is more for backend services (it doesn’t directly scaffold a frontend or authentication for you). AWS CodeStar can set up a basic project with CI/CD, but it’s not as focused on quickly adding auth/storage/etc for a front-end app as Amplify is. Lightsail is for simple server setups and doesn't natively provide the rich front-end + serverless backend integration that Amplify does."""
+
+\[\[awsdev.questions]]
+question = "A developer needs to run AWS CLI commands but cannot install the CLI locally. What AWS service provides a browser-based command-line interface environment with credentials?"
+answers = \["AWS CloudShell"]
+alternatives = \[
+"AWS Cloud9",
+"AWS Systems Manager Session Manager",
+"AWS Management Console"
+]
+explanation = """AWS CloudShell is a browser-based shell environment provided in the AWS console, pre-authenticated with the user's credentials. It comes with AWS CLI and other tools so you can run commands without any local setup. AWS Cloud9 is a web-based IDE (with a terminal) but requires creating an EC2 development environment; it's more for coding than quick CLI access. Systems Manager Session Manager is used to open shells on EC2 instances (remotely manage servers), not to run AWS commands in the cloud directly. The AWS Management Console is the web GUI; while it allows resource management, it is not a CLI environment."""
+
+\[\[awsdev.questions]]
+question = "A development team wants to automatically identify code defects and improvements during code review. Which AWS service uses machine learning to analyze source code and provide such recommendations?"
+answers = \["Amazon CodeGuru Reviewer"]
+alternatives = \[
+"Amazon CodeGuru Profiler",
+"Amazon Inspector",
+"AWS X-Ray"
+]
+explanation = """Amazon CodeGuru Reviewer uses ML to analyze code (for supported languages like Java and Python) and provides suggestions on bugs, anti-patterns, and optimizations during the code review process. It integrates with repositories to give feedback on pull requests. Amazon CodeGuru Profiler is a related service but is for profiling running applications to find performance issues (not reviewing source code). Amazon Inspector checks security vulnerabilities in AWS environments (like EC2 instances), not application source code. AWS X-Ray is for tracing application requests, not for reviewing source code."""
+
+\[\[awsdev.questions]]
+question = "An application running on EC2 needs to read and write objects in an S3 bucket. According to AWS best practices, how should the application get credentials to access the S3 bucket?"
+answers = \["Use an IAM role attached to the EC2 instance (via instance profile) that grants the necessary S3 permissions"]
+alternatives = \[
+"Configure and store a static AWS access key and secret key in the application's configuration files",
+"Embed AWS credentials directly in the application code",
+"Make the S3 bucket publicly accessible to eliminate the need for credentials"
+]
+explanation = """The recommended approach is to use an IAM role for the EC2 instance. The role’s temporary credentials are automatically provided to the instance (through the instance profile) and allow the app to access S3 securely. This avoids hardcoding secrets. Storing static access keys in config or code is insecure (they could be exposed or not rotated) and against best practices. Making the bucket public would remove the need for creds, but it exposes data to everyone, which is a major security risk and not a solution for an internal application."""
+
+\[\[awsdev.questions]]
+question = "A developer needs to store a database password that the application will use at runtime. What is the most secure way to manage this secret in AWS?"
+answers = \["Store the password in AWS Secrets Manager and retrieve it on-demand from the application"]
+alternatives = \[
+"Embed the password directly in the application code",
+"Save the password in plain text on an S3 bucket",
+"Set the password as an unencrypted environment variable"
+]
+explanation = """AWS Secrets Manager is designed to securely store sensitive information like database credentials and can automatically rotate them if configured. The secret is encrypted and only accessible via IAM-controlled API calls by authorized entities. Hardcoding a password in code or keeping it in plaintext (in S3 or environment variables) is not secure — it could be leaked or accessed by unauthorized users. If environment variables are used, they should be populated from a secure store (and even then often encrypted at rest). Secrets Manager (or at least Systems Manager Parameter Store with encryption) is the safer approach, with Secrets Manager providing built-in rotation capabilities."""
+
+\[\[awsdev.questions]]
+question = "A client application needs to upload a file directly to a private S3 bucket, but the user does not have AWS credentials. What approach allows the user to securely upload to S3 without exposing credentials or making the bucket public?"
+answers = \["Generate an S3 pre-signed URL (for a PUT upload) and have the client use that URL to upload the file"]
+alternatives = \[
+"Make the S3 bucket publicly writable during the upload window",
+"Distribute AWS access key and secret to the client application",
+"Have the client send the file to an intermediary server which then uploads to S3"
+]
+explanation = """The proper solution is to use a pre-signed URL for S3. A pre-signed URL is generated by a trusted backend (with valid credentials) and gives the client temporary permission to upload directly to the bucket. This way, the bucket stays private and no AWS keys are shared, yet the client can PUT to S3. Making the bucket public even briefly is insecure (someone else could write to it during that time). Handing out AWS credentials to end users is extremely unsafe. Having an intermediary server upload on behalf of the client would work, but it introduces unnecessary complexity and scalability bottlenecks — pre-signed URLs avoid the need for a middle-man server for the upload."""
+
+\[\[awsdev.questions]]
+question = "A startup is building a mobile app and needs user sign-up, sign-in (including Google/Facebook login), and then to allow those users access to certain AWS resources (like an S3 bucket). Which AWS service should they use to handle authentication and provide temporary credentials for AWS resources with minimal custom code?"
+answers = \["Amazon Cognito (User Pool for user authentication and Identity Pool to issue temporary AWS credentials)"]
+alternatives = \[
+"Create dedicated IAM users for each mobile app user in AWS",
+"Build a custom authentication system on EC2 and manage user credentials manually",
+"Use AWS IAM Identity Center (AWS Single Sign-On) for the app's user sign-in"
+]
+explanation = """Amazon Cognito is purpose-built for this scenario. Cognito User Pools manage user registration, login, and even social logins (federation), handling all the heavy lifting of authentication. Cognito Identity Pools then exchange those user identities for temporary AWS credentials (via IAM roles) so the app can access AWS resources like S3 on the user's behalf. Creating IAM users for each app user is not scalable or secure (IAM users are meant for system/admin access, not thousands of mobile users). Building a custom auth system is a lot of effort and risk when Cognito provides a managed solution. AWS IAM Identity Center is for enterprise/workforce SSO, not for customer-facing mobile app authentication."""
+
+\[\[awsdev.questions]]
+question = "Which of the following are supported methods for controlling access to API Gateway REST API endpoints? (Select THREE)"
+answers = \["Using AWS IAM authorization (SigV4 signed requests)", "Using Amazon Cognito user pool authorizers", "Using a Lambda function as a custom authorizer"]
+alternatives = \[
+"Applying VPC security groups to API Gateway endpoints",
+"Requiring only an API key for each request as the sole authorization mechanism"
+]
+explanation = """API Gateway supports three primary types of access control on REST APIs: IAM authentication (where requests are signed with AWS credentials and IAM policies control access), Cognito user pool authorizers (to verify JWT tokens from Amazon Cognito for user authentication), and Lambda custom authorizers (custom auth logic in a Lambda that returns an allow/deny decision). Security groups do not apply to API Gateway (it's not in a VPC where you attach security groups to it). API keys can be used with API Gateway, but they are not an authentication/authorization mechanism – they are meant for rate limiting/usage plans and provide no user identity or permission control by themselves."""
+
+\[\[awsdev.questions]]
+question = "A developer is storing sensitive files in S3 and needs them encrypted at rest with a customer-managed key that the team can control and rotate. How can this be accomplished?"
+answers = \["Use S3 server-side encryption with AWS KMS, specifying a customer-managed KMS CMK for the bucket/objects (SSE-KMS with your own key)"]
+alternatives = \[
+"Enable S3's default encryption with Amazon S3-managed keys (SSE-S3)",
+"Encrypt the files in the application before uploading to S3 (client-side encryption)",
+"Do nothing; S3 automatically encrypts all data at rest by default with no action needed"
+]
+explanation = """To have full control over the encryption keys, you would use S3 server-side encryption with KMS and choose a customer-managed CMK that your team owns. This way, you can set the key policy and rotation schedule as needed. SSE-S3 (S3-managed keys) also encrypts at rest, but those keys are managed by AWS, not by you (so you cannot control or rotate them yourself). Client-side encryption (encrypting in the app) is possible but adds complexity of key management in your application; if the requirement is just to use a customer-managed key, using KMS server-side is simpler and still meets that need. Note: AWS does encrypt S3 objects by default nowadays using SSE-S3, but that uses an AWS-managed key, not your own key, so it wouldn't fulfill the “customer-managed key” requirement."""
+
+\[\[awsdev.questions]]
+question = "A developer in Account A needs to access an S3 bucket in Account B. What is a secure way to allow this cross-account access?"
+answers = \["Use AWS STS to assume a role in Account B that has access to the bucket"]
+alternatives = \[
+"Create an IAM user in Account B and give the developer the credentials",
+"Make the S3 bucket publicly accessible",
+"Use AWS Resource Access Manager (RAM) to share the S3 bucket with Account A"
+]
+explanation = """The proper solution is to set up an IAM role in Account B that grants the needed S3 access, and allow Account A (the user or application) to assume that role via STS. This way, Account A obtains temporary credentials with only the permissions to the bucket, and no long-term credentials are shared. Creating an IAM user in Account B and sharing its keys is poor security (it’s hard to manage and revoke, and exposes static credentials). Making the bucket public is not acceptable unless you want *everyone* to have access. AWS RAM is used for sharing certain resource types (like VPC subnets, Aurora clusters) across accounts; it doesn’t support S3 buckets, which are instead shared via bucket policies or cross-account roles as described."""
+
+\[\[awsdev.questions]]
+question = "A database password must be changed every 30 days automatically. Which AWS service can manage and rotate this secret for the application?"
+answers = \["AWS Secrets Manager"]
+alternatives = \[
+"AWS Systems Manager Parameter Store",
+"AWS Key Management Service (KMS)",
+"Amazon Cognito"
+]
+explanation = """AWS Secrets Manager is the service that not only stores secrets securely but also can automatically rotate them using Lambda functions for supported services (like RDS databases). Systems Manager Parameter Store (SecureString) can store secrets, but it does not have an automatic rotation feature—you'd have to implement rotation yourself. KMS manages encryption keys, not arbitrary secrets like database passwords (KMS keys can be rotated, but that's for encryption keys, not for changing a database password). Amazon Cognito is for managing user logins (authentication), not for rotating application secrets."""
+
+\[\[awsdev.questions]]
+question = "Which of the following are AWS security best practices for application development? (Select THREE)"
+answers = \["Apply the principle of least privilege when granting IAM permissions", "Use IAM roles instead of embedding long-term credentials in code", "Store sensitive credentials (like passwords) in secure services such as Secrets Manager or Parameter Store"]
+alternatives = \[
+"Embed secret keys and passwords in your application code for quick access",
+"Grant broad IAM permissions (e.g., AdministratorAccess) to applications to avoid permission issues",
+"Allow public access to resources by default and restrict later if needed"
+]
+explanation = """Security best practices include using the least privilege principle (only give the minimum permissions required), avoiding hard-coded credentials by using IAM roles/temporary credentials, and keeping secrets out of code by using secure services (Secrets Manager, SSM Parameter Store, etc.). In contrast, embedding secrets in code or config is dangerous, giving overly broad permissions is risky (could be exploited if the app is compromised), and making resources public by default is obviously not secure. Instead, restrict access from the start and only open up what's necessary."""
+
+\[\[awsdev.questions]]
+question = "A team wants to automate deploying a new version of their application to a fleet of EC2 instances with minimal downtime. Which AWS service can orchestrate this deployment process?"
+answers = \["AWS CodeDeploy"]
+alternatives = \[
+"AWS CodeCommit",
+"AWS CodeBuild",
+"AWS CloudFormation"
+]
+explanation = """AWS CodeDeploy is a deployment service that can push out new application code to EC2 instances (and other compute platforms) while handling strategies like rolling updates or blue/green to minimize downtime. It is designed for automating application deployments. AWS CodeCommit is just a source code repository (git), not a deployment tool. AWS CodeBuild is for compiling/building code and running tests, not deploying to servers. AWS CloudFormation deploys infrastructure (it could replace instances as a way to deploy code, but it’s not typically used just to deploy application updates on existing servers in the way CodeDeploy is)."""
+
+\[\[awsdev.questions]]
+question = "The team wants a fully AWS-managed CI/CD pipeline from source code commit to deployment. Which combination of services can provide source control, build, and deployment in this pipeline?"
+answers = \["Use AWS CodeCommit for the code repository, AWS CodeBuild for build/test, and AWS CodeDeploy for deployment"]
+alternatives = \[
+"Use GitHub for the repository, Jenkins on an EC2 for builds, and AWS CodeDeploy for deployment",
+"Use AWS CodeCommit for source, AWS CodePipeline for building the code, and AWS CloudFormation for deployment",
+"Use AWS CodeCommit for source, AWS CodePipeline to orchestrate, and AWS CodeDeploy for deployment (with no build step)"
+]
+explanation = """A fully AWS-native CI/CD pipeline typically involves CodeCommit (git repo), CodeBuild (to compile/test), and CodeDeploy (to push out the application). These cover source control, build, and deploy stages respectively. Option 1 uses external/self-managed components (GitHub, Jenkins) which are not fully managed by AWS (they can work, but the question asks for AWS-managed services). Option 2 suggests CodePipeline doing the build — CodePipeline orchestrates steps but it doesn’t compile code itself (you’d still need CodeBuild in the pipeline; also using CloudFormation here is about deploying infra, not necessarily the application code to servers). Option 3 omits a build step entirely (CodePipeline + CodeDeploy but no CodeBuild), which wouldn’t be a complete CI/CD process if your code needs building or testing; CodePipeline doesn’t replace CodeBuild, it coordinates the pipeline including calling CodeBuild where needed."""
+
+\[\[awsdev.questions]]
+question = "A small company wants to deploy a web application on AWS without managing the underlying servers, load balancer, or auto-scaling. Which service should they use?"
+answers = \["AWS Elastic Beanstalk"]
+alternatives = \[
+"Amazon EC2 (manually manage servers)",
+"Amazon Lightsail",
+"AWS OpsWorks"
+]
+explanation = """AWS Elastic Beanstalk is a platform-as-a-service offering that takes your application code and automatically handles provisioning of EC2 instances, load balancers, and auto-scaling behind the scenes. It greatly simplifies deployment and management of the application. Running on raw Amazon EC2 would require the team to manage the servers, LB, scaling, etc. Amazon Lightsail is a simpler VPS service; it can host a basic site, but it doesn't auto-scale across multiple instances or manage load balancing for you by default like Beanstalk does. AWS OpsWorks (which uses Chef/Puppet) is more for configuration management on servers and is not as straightforward for quickly deploying a standard web app as Elastic Beanstalk is."""
+
+\[\[awsdev.questions]]
+question = "A team wants to automate the provisioning of all their application infrastructure (servers, databases, networking) in a repeatable way. What AWS service should they use to define and deploy this infrastructure as code?"
+answers = \["AWS CloudFormation"]
+alternatives = \[
+"AWS OpsWorks",
+"Manually create resources via the AWS Management Console",
+"AWS CodeCommit"
+]
+explanation = """AWS CloudFormation allows you to define your infrastructure in template files and deploy that consistently across environments. It will create and configure all specified resources for you, ensuring repeatability and automating setup. OpsWorks uses configuration management (Chef/Puppet) and is not as broadly used for defining all infrastructure resources as CloudFormation. Manually clicking in the Console is not repeatable or automated. AWS CodeCommit is a source code git repository and does not provision infrastructure."""
+
+\[\[awsdev.questions]]
+question = "What deployment strategy involves running a new version of an application alongside the old version and then switching all traffic to the new version only after testing it in parallel?"
+answers = \["Blue/Green deployment"]
+alternatives = \[
+"Rolling deployment",
+"Canary deployment",
+"In-place update (all-at-once)"
+]
+explanation = """Blue/Green deployment means you have two environments: one running the current (blue) version and one running the new (green) version. You test the green environment, then switch traffic over (usually via an update in DNS or load balancer) so all users go to green. If something is wrong, you can switch back to blue quickly. In a rolling deployment, you replace instances of the old version with new version instances gradually, not keeping two full environments. A canary deployment sends a small percentage of traffic to the new version and gradually increases it, rather than an all-at-once cutover (canary and blue/green are related, but canary is incremental traffic shifting). An in-place all-at-once update means you just deploy the new version onto your existing environment in one go, which would cause downtime and isn't the safe parallel approach that blue/green provides."""
+
+\[\[awsdev.questions]]
+question = "A developer wants to deploy a new Lambda function version with minimal risk. They would like to send only a small percentage of live traffic to the new version initially, and the rest to the stable version. How can this be achieved?"
+answers = \["Use a Lambda alias with a routing configuration (or AWS CodeDeploy for Lambda) to direct a small percentage of invocations to the new version"]
+alternatives = \[
+"Deploy the new code as a separate Lambda function and update half the clients to use it",
+"Gradually increase the Lambda function's memory setting to test the new version",
+"It's not possible to route a subset of traffic to a new Lambda version; all traffic goes to the latest version"
+]
+explanation = """AWS Lambda aliases support weighted routing between two versions of a function. For example, you can configure an alias to send 10% of invocations to the new version and 90% to the old version. AWS CodeDeploy provides a deployment configuration for Lambda that automates this canary or linear traffic shifting using such aliases. In contrast, deploying a separate Lambda and pointing some clients to it is a very manual approach and not dynamic (plus you'd have to orchestrate which clients use which). Adjusting memory has nothing to do with testing a new code version safely. And it is indeed possible to split traffic; you are not forced to send 100% of calls to the latest version if you use aliases/CodeDeploy for Lambda."""
+
+\[\[awsdev.questions]]
+question = "A developer is containerizing an application. Where should they store the Docker container images so that they can be easily deployed to AWS services?"
+answers = \["Amazon Elastic Container Registry (ECR)"]
+alternatives = \[
+"Amazon S3",
+"Docker Hub",
+"AWS CodeCommit"
+]
+explanation = """Amazon ECR is AWS’s managed Docker container registry for storing and retrieving container images. It integrates with AWS services like ECS and EKS for deployment and uses IAM for access control. While you could technically store images as files in S3, that’s not practical or directly supported for container deployment processes. Docker Hub is a public container registry (or private with a subscription), but using it would mean external dependencies and potential rate limits; AWS offers ECR as a scalable alternative. AWS CodeCommit is a source code git repository and not meant for storing large binary images like Docker containers."""
+
+\[\[awsdev.questions]]
+question = "A developer wants to run a Docker container in AWS but does not want to manage any EC2 servers for it. Which service can they use?"
+answers = \["AWS Fargate (with Amazon ECS or EKS)"]
+alternatives = \[
+"Launching the container on an EC2 instance",
+"Amazon ECS with EC2 launch type",
+"AWS Lambda with the container image"
+]
+explanation = """AWS Fargate is a serverless compute engine for containers: it allows you to run containers on AWS without provisioning or managing the underlying EC2 instances. You can use Fargate with ECS or EKS to run the container on-demand, and AWS handles the infrastructure. Launching containers on EC2 or using ECS in EC2 mode means you have to manage the server cluster yourself (scaling, patching, etc.). Lambda can run containers as functions (as packaging format), but it's limited to short-lived execution (max 15 minutes) and event-driven use cases. For a general containerized application that needs to run without server management, Fargate is the intended solution."""
+
+\[\[awsdev.questions]]
+question = "The development team uses many internal libraries and needs a place to store and share their Maven and npm packages within AWS. Which service can act as a private artifact/package repository?"
+answers = \["AWS CodeArtifact"]
+alternatives = \[
+"Amazon S3",
+"AWS CodeCommit",
+"AWS Artifact"
+]
+explanation = """AWS CodeArtifact is a fully managed artifact repository for software packages. It supports package formats like Maven, npm, PyPI, etc., allowing the team to publish and retrieve internal dependencies easily with proper versioning and security. While Amazon S3 could be used as a raw storage for files, it doesn't provide package management features (like dependency resolution or convenient publishing/retrieving with package managers). AWS CodeCommit is for source code (git), not compiled packages. AWS Artifact (despite its name) is unrelated — it's a portal for compliance reports, not a code artifact storage service."""
+
+\[\[awsdev.questions]]
+question = "After deploying a Lambda function, where can the developer find the logs output by the function's code by default?"
+answers = \["In Amazon CloudWatch Logs, in the log group for that Lambda function"]
+alternatives = \[
+"Stored in an S3 bucket automatically created for the Lambda",
+"Captured by AWS CloudTrail",
+"They are not retained unless manually exported"
+]
+explanation = """By default, AWS Lambda writes logs to Amazon CloudWatch Logs. Each Lambda function has a log group (usually named `/aws/lambda/<function-name>`) where you can find the logs for its invocations. These logs are stored automatically whenever the function runs. They are not automatically sent to S3 unless you set up an export or subscription. AWS CloudTrail records API calls (like calls to invoke the Lambda or manage it), but not the Lambda function's *execution logs*. And you don't have to manually save the logs—CloudWatch Logs keeps them (you can set retention policies, but otherwise they are retained by default)."""
+
+\[\[awsdev.questions]]
+question = "A developer wants to be notified if a Lambda function's error rate exceeds a certain threshold. What AWS service and feature can achieve this?"
+answers = \["Use Amazon CloudWatch Alarms on the Lambda's error metric (and have the alarm send a notification via SNS)"]
+alternatives = \[
+"Use AWS CloudTrail with an alarm",
+"Use AWS X-Ray's alerting feature",
+"Manually monitor the logs periodically"
+]
+explanation = """Amazon CloudWatch can track metrics for AWS services (for example, Lambda automatically records metrics like invocation count and error count). The developer can create a CloudWatch Alarm on the "Errors" metric of the Lambda function and set a threshold; the alarm can be configured to send an SNS notification (email, etc.) when triggered. CloudTrail is for auditing API calls and doesn't provide threshold alarms on service metrics. AWS X-Ray is for tracing and debugging but doesn’t have a built-in alerting mechanism for error rates. Manually watching logs is not reliable—automated alarms are the proper solution."""
+
+\[\[awsdev.questions]]
+question = "An application is composed of multiple microservices. Users report that requests are slow, and the team suspects one of the services is causing delays. Which AWS service can help trace user requests through different microservices and identify where the latency is occurring?"
+answers = \["AWS X-Ray"]
+alternatives = \[
+"Amazon CloudWatch metrics",
+"AWS CloudTrail",
+"Analyzing application logs manually"
+]
+explanation = """AWS X-Ray is designed for exactly this purpose: tracing requests end-to-end through a distributed application. By instrumenting the services, X-Ray provides a trace map and timing information for each segment (service), making it clear if, say, the database call in one microservice is slow. CloudWatch metrics might show individual service metrics (like CPU or latency per service) but won’t tie a single user request through all microservices. CloudTrail logs AWS API calls (for auditing), not the internal flow of an app. Manually checking logs across services without a tracing tool is tedious and may not easily correlate a single request through all components."""
+
+\[\[awsdev.questions]]
+question = "A Lambda function is attempting to write an item to a DynamoDB table and is failing with an 'AccessDenied' error. What is the MOST likely cause of this error?"
+answers = \["The Lambda function’s execution role does not have permission (via IAM policy) to write to that DynamoDB table"]
+alternatives = \[
+"The DynamoDB table is not configured to accept writes from Lambda functions",
+"The Lambda function is in a different VPC than the DynamoDB table",
+"The Lambda's memory setting is too low to perform the write operation"
+]
+explanation = """An 'AccessDenied' error typically indicates an IAM permission issue. In this scenario, the most likely cause is that the Lambda’s IAM role lacks the necessary permissions (for example, missing a DynamoDB PutItem permission for the target table). If the role’s policy doesn’t allow the action, DynamoDB will refuse with AccessDenied. There’s no special DynamoDB configuration needed to accept Lambda writes beyond IAM permissions. The Lambda’s VPC doesn’t matter for DynamoDB access because DynamoDB is accessed over the internet (it's a web service; VPC or subnet differences would cause network timeouts, not AccessDenied). Memory settings of the Lambda would not cause an AccessDenied error—they would affect performance or cause out-of-memory issues, but not a permission error."""
+
+\[\[awsdev.questions]]
+question = "Which AWS service records API calls and resource changes in your account, providing an audit log of actions taken (e.g., who created or modified a resource)?"
+answers = \["AWS CloudTrail"]
+alternatives = \[
+"Amazon CloudWatch",
+"AWS Config",
+"AWS CloudFormation"
+]
+explanation = """AWS CloudTrail logs all API calls and actions made in your AWS account – for example, if someone calls an AWS CLI command or if a resource is created, modified, or deleted via the AWS API, CloudTrail records that event (including who made the call and when). CloudWatch focuses on monitoring (metrics and logs for operational data) rather than a history of *who* did *what*. AWS Config does track the history of resource configurations, but it’s about the state of resources over time and compliance; it doesn’t log every API call or identify the user/API caller (Config often uses CloudTrail under the hood for change detection). CloudFormation is an infrastructure-as-code service and not an auditing tool at all."""
+
+\[\[awsdev.questions]]
+question = "A team wants to implement feature flags and dynamically change application settings at runtime without redeploying the application. Which AWS service can help manage and deploy application configuration changes safely (with validation and gradual rollout)?"
+answers = \["AWS AppConfig (part of AWS Systems Manager)"]
+alternatives = \[
+"AWS Secrets Manager",
+"AWS CloudFormation",
+"Amazon EC2 User Data"
+]
+explanation = """AWS AppConfig (a feature of Systems Manager) is designed for managing application configuration and feature flags. It allows you to define config profiles, validate configurations, and deploy changes gradually to your application at runtime, which is ideal for feature toggles or dynamic settings changes. Secrets Manager is for sensitive data like passwords – not general feature flag config, and it doesn't provide deployment strategies (and you wouldn't want to misuse it for feature flags). CloudFormation can change configurations, but via redeploying stacks (not real-time toggles within a running app) and is geared to infrastructure setup. EC2 User Data provides initial launch configuration for instances and isn't a tool for dynamic config changes after launch."""
+
+\[\[awsdev.questions]]
+question = "An application needs a multi-region database solution for low-latency access in both the US and Europe. The team wants a single DynamoDB table that replicates data across regions. Which DynamoDB feature should be used?"
+answers = \["DynamoDB Global Tables"]
+alternatives = \[
+"DynamoDB Local Secondary Indexes (LSI)",
+"AWS Database Migration Service (DMS) replication",
+"Multi-AZ (regional) deployment"
+]
+explanation = """DynamoDB Global Tables provide a multi-master, multi-region replication for DynamoDB tables. Using Global Tables, writes made in one region are replicated to other regions, and reads/writes can be performed locally in each region for low latency while keeping data in sync across regions. Local Secondary Indexes are not related to multi-region at all; they are additional indexes within a single DynamoDB table (and region). AWS DMS could replicate data between databases across regions, but that would be a custom solution and not multi-master (and far less seamless than enabling Global Tables). Multi-AZ is within a single region (high availability across AZs) and does not provide a multi-region capability."""
